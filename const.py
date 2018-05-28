@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 
 class Const():
-    command_description = 'Wrapper on "sshpass", "scp" and "iperf" utilities.'
-    command_type = 'type: shp, scp, ipe'
+    # constants for argparse
+    command_description = 'Wrapper on "sshpass" and "scp" utilities.'
+    command_type = 'type: sshpass, scp'
+    type_choices = ['sshpass', 'scp']
+    type_destination = 'type'

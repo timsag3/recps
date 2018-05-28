@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Wrapper on "sshpass", "scp" and "iperf" utilities.
+A python wrapper on "sshpass" and "scp" utilities.
 """
 
 if __name__ == '__main__':
