@@ -10,7 +10,7 @@ class AbstractClient(metaclass=ABCMeta):
         self._command = command
 
     @abstractmethod
-    def get_result(self, command: object) -> list:
+    def send_request(self, command: object) -> list:
         raise NotImplementedError()
 
     @abstractmethod
