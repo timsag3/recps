@@ -1,7 +1,8 @@
-#!/usr/bin/python
+# -*- coding: utf-8 -*-
 
-from command_workers import command_executor
 from abc import ABCMeta, abstractmethod
+from command_workers.command_executor import CommandExecutor
+from parsers.output_parser import OutputParser
 
 
 class AbstractClient(metaclass=ABCMeta):
@@ -17,13 +18,15 @@ class AbstractClient(metaclass=ABCMeta):
 
 class Client(AbstractClient):
     """
-    Базовый клиент от котогого наследуются ssh клиент. Так же
+    Базовый клиент. Является родителем для ssh клиента. Так же
     может создавать самостоятельные сущности для локальных клиентов.
     """
+
     def __init__(self, command=None):
         super(Client, self).__init__()
         self.command = command
-        self.executor = command_executor.CommandExecutor
+        self.executor = CommandExecutor
+        self.output_parser = OutputParser()
 
     def send_request(self):
         request = self.executor.exec_command(self.command)
@@ -31,3 +34,4 @@ class Client(AbstractClient):
 
     def show_response(self):  # :(
         pass
+

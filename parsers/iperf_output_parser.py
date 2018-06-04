@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
 
 
-class IperfParser(object):  # :(
+class IperfOutputParser(object):  # :(
     pass

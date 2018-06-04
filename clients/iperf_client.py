@@ -2,6 +2,7 @@
 
 from clients.base_client import AbstractClient
 from command_workers.iperf_command_builder import IperfCommandBuilder
+from parsers.iperf_output_parser import IperfOutputParser
 
 
 class IperfClient(AbstractClient):
@@ -17,6 +18,7 @@ class IperfClient(AbstractClient):
         self.server_host = server_host
         self.client_host = client_host
         self.command_builder = IperfCommandBuilder()
+        self.output_parser = IperfOutputParser()
 
     def send_request(self):  # :(
         pass
