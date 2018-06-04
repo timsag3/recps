@@ -1,12 +1,11 @@
-#!usr/bin/python
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
 """
-This module is a wrapper over 'ssh', 'sshpass',
-'scp' and 'iperf' utilities.
+Wrapper on ssh, sshpass, scp and ipref utilities
 """
 
-import subprocess
+from clients.client_manager import ClientManager
 
-if __name__ == '__main__':
-    pass
+if __name__ == "__main__":
+    utility_manager = ClientManager()
