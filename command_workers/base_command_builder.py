@@ -1,26 +1,25 @@
 # -*- coding: utf-8 -*-
 
 
-class CommandBuilder(object):
+class BaseCommandBuilder(object):
 
-    def __init__(self, client):
-        self._client = client
-        self._command = client.command
+    def __init__(self, password, path_to_pass):
+        self._password = password
+        self._path_to_pass = path_to_pass
         self._sshpass_pref = self.get_sshpass_pref()
-        self._pref = self.get_self_pref()
+        self._main_prefix = self.get_main_pref()
 
     def get_sshpass_pref(self):
-        password = self._client.remote_host.password
-        path_to_pass = self._client.remote_host.path_to_pass
+        password = self._password
+        path_to_pass = self._path_to_pass
         if password:
             return f'sshpass -p {password} '
         elif path_to_pass:
             return f'sshpass -f {path_to_pass} '
         else:
-            return None
+            return ''
 
-
-    def get_self_pref(self):
+    def get_main_pref(self):
         raise NotImplementedError
 
     def build_command(self):

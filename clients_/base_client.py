@@ -1,25 +1,33 @@
 # -*- coding: utf-8 -*-
 
 from abc import ABCMeta, abstractmethod
-from command_builders.command_executor import CommandExecutor
+from command_workers.command_executor import CommandExecutor
 
 
 class AbstractClient(metaclass=ABCMeta):
 
-    def __init__(self, command=None):
-        self.executor = CommandExecutor
-        self.command = command
-
     @abstractmethod
-    def send_request(self):
+    def request(self):
         raise NotImplementedError
 
 
-class Client(AbstractClient):
+class LocalClient(AbstractClient):
 
-    def __init__(self, command=None):
-        super(Client, self).__init__(command)
+    def __init__(self, command):
+        super(LocalClient, self).__init__()
+        self._command = command
 
-    def send_request(self):
-        data = self.executor.exec_command(self.command)
-        return data
+    def request(self):
+        command_executor = CommandExecutor
+        command = self._command
+        response = command_executor.exec_command(command)
+        return response
+
+
+class RemoteClient(AbstractClient):
+    def __init__(self):
+        super(RemoteClient, self).__init__()
+
+    @abstractmethod
+    def build_command(self):
+        raise NotImplementedError

@@ -2,16 +2,15 @@
 # -*- coding: utf-8 -*-
 
 """
-Wrapper on ssh, sshpass, scp and ipref utilities
+Python Wrapper on ssh, sshpass, scp and ipref utilities
 """
 
 from parsers_.args_parser import ArgParser
-from client_builders.client_manager import ClientManager
+from clients_.client_manager import ClientManager
 
 if __name__ == "__main__":
-    utility_type = ArgParser.get_args()
-    client_manager = ClientManager(utility_type)
+    args = ArgParser.get_args()
+    client_manager = ClientManager(args)
     client = client_manager.get_client()
-    request = client.send_request()
-    print(request)
-    exit()
+    # request = client.send_request()
+    # print(request)
