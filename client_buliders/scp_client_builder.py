@@ -11,8 +11,9 @@ class SCPClientBuilder(ClientBuilder):
     def build_client(self):
         source = self._data['source']
         destination = self._data['destination']
-        if '@' in (source or destination):
-            raise TypeError
+        if '@' in source and '@' in destination:
+            print('Copy between two remote hosts not realized yet!')
+            return
         return SCPClient(password=self._password,
                          path_to_pass=self._path_to_pass,
                          source=source,

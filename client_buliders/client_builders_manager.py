@@ -11,11 +11,12 @@ class ClientManager(object):
         self._data = user_args
 
     def get_client(self):
-        client = 'undefined'
+        client_builder = 'undefined'
         if 'user_at_host' in self._data:
-            client = SSHClientBuilder.build_client(self._data)
+            client_builder = SSHClientBuilder(self._data)
         elif 'source' and 'destination' in self._data:
-            client = SCPClientBuilder.build_client(self._data)
+            client_builder = SCPClientBuilder(self._data)
         elif 'server' and 'client' in self._data:
-            client = PerfClientBuilder.build_client(self._data)
+            client_builder = PerfClientBuilder(self._data)
+        client = client_builder.build_client()
         return client

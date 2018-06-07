@@ -44,6 +44,6 @@ class ArgParser(object):
                                   help='username@hostname or local')
         args = parser.parse_args()
         args_dict = args.__dict__
-        if len(args_dict) == 4:
+        if len(args_dict) == 2:
             return parser.parse_args(['-h'])
         return args_dict

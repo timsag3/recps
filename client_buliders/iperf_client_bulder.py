@@ -2,7 +2,7 @@
 
 from client_buliders.base_client_builder import ClientBuilder
 from clients_.iperf_client import PerfClient
-from clients_.base_client import LocalClient
+from clients_.base_clients import Client
 from clients_.ssh_client import SSHClient
 
 
@@ -16,7 +16,7 @@ class PerfClientBuilder(ClientBuilder):
         server = self._data['server']
         client = self._data['client']
         if server == 'local' and client != 'local':
-            perf_server = LocalClient(self._server_cmd)
+            perf_server = Client(self._server_cmd)
             perf_client = SSHClient(password=self._password,
                                     path_to_pass=self._path_to_pass,
                                     user_at_host=client,
@@ -26,7 +26,8 @@ class PerfClientBuilder(ClientBuilder):
                                     path_to_pass=self._path_to_pass,
                                     user_at_host=server,
                                     command=self._server_cmd)
-            perf_client = LocalClient(self._client_cmd.format(client))
+            perf_client = Client(self._client_cmd.format(client))
         else:
-            raise TypeError
+            print('Performance two remote hosts not realized yet!')
+            return
         return PerfClient(perf_server, perf_client)
