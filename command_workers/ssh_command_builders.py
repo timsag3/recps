@@ -6,7 +6,8 @@ from command_workers.base_command_builder import BaseCommandBuilder
 class SSHCommandBuilder(BaseCommandBuilder):
 
     def __init__(self, user_at_host, password, path_to_pass, command):
-        super(SSHCommandBuilder, self).__init__(password=password, path_to_pass=path_to_pass)
+        super(SSHCommandBuilder, self).__init__(password=password,
+                                                path_to_pass=path_to_pass)
         self._user_at_host = user_at_host
         self._command = command
 

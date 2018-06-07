@@ -6,10 +6,10 @@ from command_workers.scp_command_builder import SCPCommandBuilder
 
 class SCPClient(SSHClient):
 
-    def __init__(self, user_args):
-        super(SCPClient, self).__init__(user_args)
-        self._source = user_args['source']
-        self._destination = user_args['destination']
+    def __init__(self, password, path_to_pass, source, destination):
+        super(SCPClient, self).__init__(password, path_to_pass)
+        self._source = source
+        self._destination = destination
 
     def build_command(self):
         command_builder = SCPCommandBuilder(self._source,

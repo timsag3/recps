@@ -6,12 +6,12 @@ from command_workers.ssh_command_builders import SSHCommandBuilder
 
 class SSHClient(RemoteClient):
 
-    def __init__(self, user_args):
+    def __init__(self, password, path_to_pass, command=None, user_at_host=None):
         super(SSHClient, self).__init__()
-        self._user_at_host = user_args['user_at_host']
-        self._password = user_args['password']
-        self._path_to_pass = user_args['path_to_pass']
-        self._command = user_args['cmd'] if 'cmd' in user_args else None
+        self._user_at_host = user_at_host
+        self._password = password
+        self._path_to_pass = path_to_pass
+        self._command = command
         self._full_command = self.build_command()
 
     def build_command(self):
