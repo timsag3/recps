@@ -14,4 +14,4 @@ class SSHClientBuilder(ClientBuilder):
         return SSHClient(password=self._password,
                          path_to_pass=self._path_to_pass,
                          user_at_host=user_at_host,
-                         command=command)
+                         raw_command=command)

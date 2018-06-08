@@ -19,6 +19,6 @@ class SCPCommandBuilder(AbstractCommandBuilder, SSHPassPrefixGetter):
         return main_prefix
 
     def build_command(self):
-        sshpass_pref = self._sshpass_pref
+        sshpass_prefix = self._sshpass_prefix
         main_prefix = self._main_prefix
-        return sshpass_pref + main_prefix
+        return sshpass_prefix + main_prefix

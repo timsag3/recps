@@ -20,12 +20,12 @@ class PerfClientBuilder(ClientBuilder):
             perf_client = SSHClient(password=self._password,
                                     path_to_pass=self._path_to_pass,
                                     user_at_host=client,
-                                    command=self._client_cmd.format(server))
+                                    raw_command=self._client_cmd.format(server))
         elif server != 'local' and client == 'local':
             perf_server = SSHClient(password=self._password,
                                     path_to_pass=self._path_to_pass,
                                     user_at_host=server,
-                                    command=self._server_cmd)
+                                    raw_command=self._server_cmd)
             perf_client = Client(self._client_cmd.format(client))
         else:
             print('Performance two remote hosts not realized yet!')

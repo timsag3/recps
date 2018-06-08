@@ -18,7 +18,7 @@ class SSHCommandBuilder(AbstractCommandBuilder, SSHPassPrefixGetter):
         return main_prefix
 
     def build_command(self):
-        ssh_pass_pref = self._sshpass_pref
+        ssh_pass_prefix = self._sshpass_prefix
         main_prefix = self._main_prefix
         command = self._command
-        return ssh_pass_pref + main_prefix + command
+        return ssh_pass_prefix + main_prefix + command

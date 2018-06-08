@@ -17,7 +17,7 @@ class SSHPassPrefixGetter(object):
     def __init__(self, password, path_to_pass):
         self._password = password
         self._path_to_pass = path_to_pass
-        self._sshpass_pref = self.get_sshpass_prefix()
+        self._sshpass_prefix = self.get_sshpass_prefix()
 
     def get_sshpass_prefix(self):
         password = self._password
