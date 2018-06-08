@@ -8,6 +8,7 @@ class CommandExecutor(object):
     @staticmethod
     def exec_command(command):
         cmd_list = command.split(' ')
-        process = subprocess.Popen(cmd_list, shell=False)
-        process.communicate()
-        return True
+        process = subprocess.run(cmd_list, encoding='utf-8', )
+        x = process.stdout
+        y = process.stderr
+        return x, y

@@ -23,4 +23,4 @@ class SSHClient(RemoteClient):
 
     def request(self):
         data = CommandExecutor.exec_command(self._full_command)
-        print(data)
+        return data
