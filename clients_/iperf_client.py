@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from clients_.base_clients import AbstractClient
+from threading import Thread
+import time
 
 
 class PerfClient(AbstractClient):
@@ -11,6 +13,9 @@ class PerfClient(AbstractClient):
         self._client = client
 
     def request(self):
-        server_data = self._server.request()
-        client_data = self._client.request()
-        return server_data, client_data
+        server_thread = Thread(target=self._server.request)
+        client_thread = Thread(target=self._client.request)
+        server_thread.start()
+        time.sleep(1)
+        client_thread.start()
+        server_thread.join(), client_thread.join()

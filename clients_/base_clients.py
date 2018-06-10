@@ -28,15 +28,14 @@ class Client(AbstractClient):
 
 
 class RemoteClient(Client):
-    def __init__(self, password, path_to_pass, raw_command=None):
+    def __init__(self, password, path_to_pass, raw_command=None, user_at_host=None):
         super(RemoteClient, self).__init__(raw_command=raw_command)
+        self._user_at_host = user_at_host
         self._password = password
         self._path_to_pass = path_to_pass
-        self._command_builder = None
-        self._full_command = self.build_command()
+        self._full_command = None
 
-    @abstractmethod
-    def build_command(self):
-        """
-        :return: string sequence
-        """
+    def request(self):
+        raw_data = self._command_executor.exec_command(self._full_command)
+        parsed_data = self._response_parser.parse_data(raw_data)
+        return parsed_data

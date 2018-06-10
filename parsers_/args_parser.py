@@ -23,8 +23,7 @@ class ArgParser(object):
         parser_ssh.add_argument('user_at_host',
                                 metavar='username@hostname')
         parser_ssh.add_argument('cmd',
-                                metavar='command',
-                                nargs='*')
+                                metavar='command')
 
         parser_scp = subparsers.add_parser('scp',
                                            help='copy file from/to remote host using secure shell '
