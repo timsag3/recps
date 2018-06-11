@@ -8,7 +8,6 @@ class CommandExecutor(object):
     @staticmethod
     def exec_command(command):
         cmd_list = command.split(' ')
-        print(cmd_list)
         process = subprocess.run(cmd_list, encoding='utf-8',
                                  stdout=subprocess.PIPE,
                                  stderr=subprocess.PIPE)

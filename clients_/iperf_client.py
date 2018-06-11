@@ -16,6 +16,6 @@ class PerfClient(AbstractClient):
         server_thread = Thread(target=self._server.request)
         client_thread = Thread(target=self._client.request)
         server_thread.start()
-        time.sleep(1)
+        time.sleep(5)
         client_thread.start()
         server_thread.join(), client_thread.join()
