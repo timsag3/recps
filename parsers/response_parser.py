@@ -11,6 +11,6 @@ class ResponseParser(object):
         if 'Server listening' in stdout:
             return output_str
         if return_code != 0:
-            output_str += 'Failed!\nexit code: ' + str(return_code)
+            output_str += f'Failed!\nexit code: {return_code}'
         print(output_str)
         return output_str

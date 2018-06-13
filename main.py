@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 """
@@ -10,7 +10,7 @@ possibility to enter password as command argument and read
 it from the file.
 """
 
-from parsers_.args_parser import ArgParser
+from parsers.args_parser import ArgParser
 from client_buliders.client_builders_manager import ClientManager
 
 

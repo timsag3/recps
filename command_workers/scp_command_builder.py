@@ -6,8 +6,7 @@ from command_workers.base_command_builder import AbstractCommandBuilder, SSHPass
 class SCPCommandBuilder(AbstractCommandBuilder, SSHPassPrefixGetter):
 
     def __init__(self, source, destination, password, path_to_pass):
-        super(SCPCommandBuilder, self).__init__(password=password,
-                                                path_to_pass=path_to_pass)
+        super().__init__(password=password, path_to_pass=path_to_pass)
         self._source = source
         self._destination = destination
         self._main_prefix = self.get_main_pref()
@@ -18,7 +17,7 @@ class SCPCommandBuilder(AbstractCommandBuilder, SSHPassPrefixGetter):
         main_prefix = f'scp -rp {source} {destination}'
         return main_prefix
 
-    def build_command(self):
-        sshpass_prefix = self._sshpass_prefix
+    def _build_command(self):
+        ssh_pass_prefix = self._get_ssh_pass_prefix
         main_prefix = self._main_prefix
-        return sshpass_prefix + main_prefix
+        return f'{ssh_pass_prefix} {main_prefix}'

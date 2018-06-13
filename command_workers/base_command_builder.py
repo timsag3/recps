@@ -6,25 +6,19 @@ from abc import ABCMeta, abstractmethod
 class AbstractCommandBuilder(metaclass=ABCMeta):
 
     @abstractmethod
-    def build_command(self):
+    def _build_command(self):
         """
         :return: command string
         """
 
 
-class SSHPassPrefixGetter(object):
+class SSHPassPrefixGetter:
 
-    def __init__(self, password, path_to_pass):
+    def __init__(self, password=None, path_to_pass=False):
         self._password = password
         self._path_to_pass = path_to_pass
-        self._sshpass_prefix = self.get_sshpass_prefix()
 
-    def get_sshpass_prefix(self):
-        password = self._password
-        path_to_pass = self._path_to_pass
-        if password:
-            return f'sshpass -p {password} '
-        elif path_to_pass:
-            return f'sshpass -f {path_to_pass} '
-        else:
-            return ''
+    def _get_ssh_pass_prefix(self):
+        if self._password is not None:
+            return f'sshpass {"-f" if self._path_to_pass else "-p"} {self._password}'
+        return ''

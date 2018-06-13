@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from clients_.base_clients import AbstractClient
+from clients.base_clients import AbstractClient
 from threading import Thread
 import time
 
@@ -8,7 +8,7 @@ import time
 class PerfClient(AbstractClient):
 
     def __init__(self, server, client):
-        super(PerfClient, self).__init__()
+        super().__init__()
         self._server = server
         self._client = client
 

@@ -5,14 +5,13 @@ from client_buliders.scp_client_builder import SCPClientBuilder
 from client_buliders.iperf_client_bulder import PerfClientBuilder
 
 
-
-class ClientManager(object):
+class ClientManager:
 
     def __init__(self, user_args):
         self._data = user_args
 
     def get_client(self):
-        client_builder = 'undefined'
+        client_builder = None
         if 'user_at_host' in self._data:
             client_builder = SSHClientBuilder(self._data)
         elif 'source' and 'destination' in self._data:
