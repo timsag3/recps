@@ -11,6 +11,4 @@ class ClientBuilder(metaclass=ABCMeta):
 
     @abstractmethod
     def build_client(self):
-        """
-        :return: client object
-        """
+        pass

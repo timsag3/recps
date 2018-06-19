@@ -11,12 +11,14 @@ class ClientManager:
         self._data = user_args
 
     def get_client(self):
-        client_builder = None
         if 'user_at_host' in self._data:
             client_builder = SSHClientBuilder(self._data)
         elif 'source' and 'destination' in self._data:
             client_builder = SCPClientBuilder(self._data)
         elif 'server' and 'client' in self._data:
             client_builder = PerfClientBuilder(self._data)
+        else:
+            print('Error: unknown arguments!')
+            return None
         client = client_builder.build_client()
         return client

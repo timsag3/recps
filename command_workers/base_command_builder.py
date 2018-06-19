@@ -6,10 +6,8 @@ from abc import ABCMeta, abstractmethod
 class AbstractCommandBuilder(metaclass=ABCMeta):
 
     @abstractmethod
-    def _build_command(self):
-        """
-        :return: command string
-        """
+    def build_command(self):
+        pass
 
 
 class SSHPassPrefixGetter:

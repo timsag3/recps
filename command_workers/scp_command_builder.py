@@ -9,15 +9,15 @@ class SCPCommandBuilder(AbstractCommandBuilder, SSHPassPrefixGetter):
         super().__init__(password=password, path_to_pass=path_to_pass)
         self._source = source
         self._destination = destination
-        self._main_prefix = self.get_main_pref()
+        self._main_prefix = self._get_main_pref()
 
-    def get_main_pref(self):
+    def _get_main_pref(self):
         source = self._source
         destination = self._destination
         main_prefix = f'scp -rp {source} {destination}'
         return main_prefix
 
-    def _build_command(self):
+    def build_command(self):
         ssh_pass_prefix = self._get_ssh_pass_prefix
         main_prefix = self._main_prefix
         return f'{ssh_pass_prefix} {main_prefix}'

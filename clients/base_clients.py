@@ -9,9 +9,7 @@ class AbstractClient(metaclass=ABCMeta):
 
     @abstractmethod
     def request(self):
-        """
-        :return: list sequence [stdout, stderr, return code]
-        """
+        pass
 
 
 class Client(AbstractClient):

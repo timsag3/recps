@@ -14,4 +14,4 @@ class SCPClient(RemoteClient):
                                                   destination=self._destination,
                                                   password=self._password,
                                                   path_to_pass=self._path_to_pass)
-        self._full_command = self._command_builder._build_command()
+        self._full_command = self._command_builder.build_command()
